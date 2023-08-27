@@ -1,0 +1,8 @@
+#!/usr/bin/with-contenv bash
+
+DEFAULT_GATEWAY=$(ip r | grep default | cut -d' ' -f3)
+NETWORK_NAME=${NETWORK_NAME:-eth0}
+[[ -n ${ROUTE_ADD} ]] && for route in ${ROUTE_ADD//[;,]/ }; do \
+  echo "adding route ${route} via ${DEFAULT_GATEWAY} to dev ${NETWORK_NAME}"
+  ip route add ${route} via ${DEFAULT_GATEWAY} dev ${NETWORK_NAME}; \
+done

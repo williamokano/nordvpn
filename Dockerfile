@@ -21,4 +21,4 @@ RUN apt-get update -y && \
 
 COPY /rootfs /
 ENV S6_CMD_WAIT_FOR_SERVICES=1
-CMD nord_login && nord_config && nord_connect && nord_migrate && nord_watch
+CMD nord_login && nord_config && nord_connect && nord_route && nord_migrate && nord_watch
